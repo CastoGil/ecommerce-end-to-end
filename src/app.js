@@ -83,6 +83,12 @@ app.use(compression({ brotli: { enabled: true, zlib: {} } }));
 
 // Rutas
 app.use(cors())
+app.use((req, res, next) => {
+  if (req.url === "/") {
+    return res.redirect("/api/products");
+  }
+  next();
+});
 app.use("/api", mainRouter); // Manejador de rutas
 app.use("/", viewsRouter); // Ruta websocket
 app.use("/", chatRouter); // Ruta chat
