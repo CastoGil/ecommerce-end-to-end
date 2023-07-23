@@ -25,7 +25,7 @@ export const sendPasswordResetEmail = async (to, resetPasswordLink) => {
         <p>Si no has solicitado este restablecimiento, puedes ignorar este correo electrónico.</p>
       `,
     };
-
+    
     await transporter.sendMail(mailOptions);
 
     logger.info("Correo electrónico enviado con éxito");
