@@ -1,0 +1,127 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<nav class="navbar navbar-dark bg-body-tertiary bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto" href="/api/products?cartId={{cartId}}"><i class="fa-solid fa-store"></i> TIENDA DE ROPA</a>
+    {{#if token}}
+      <!-- Usuario logueado -->
+      <div>
+        <p class="roleUser card-text"><i class="fa-solid fa-user"></i> {{ role }}</p>
+      </div>
+      <p class="login card-text">Bienvenido {{ first_name }}</p>
+      <form action="/auth/logout" method="GET">
+        <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
+      </form>
+      <a class="btn btn-outline-danger cart" href="/api/carts/{{ cartId }}"><i class="fa-solid fa-cart-shopping fa-bounce"></i></a>
+      <!-- Nuevas rutas como enlaces en una lista desplegable -->
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Más opciones
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/chat?cartId={{cartId}}">Chat</a>
+          <a class="dropdown-item" href="/realtimeproducts?cartId={{cartId}}">Productos en Tiempo Real</a>
+          <a class="dropdown-item" href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}">Subir Documentos</a>
+          <a class="dropdown-item" href="/auth/users/premium/{{uid}}?cartId={{cartId}}">Cambiar a Premium</a>
+        </div>
+      </div>
+    {{else}}
+      {{#if admin}}
+        <!-- Usuario administrador logueado -->
+        <div>
+          <p class="login card-text"><i class="fa-solid fa-user"></i> {{ admin }}</p>
+        </div>
+        <form action="/auth/logout" method="GET">
+          <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
+        </form>
+        <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Más opciones
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/realtimeproducts">Productos en Tiempo Real</a>
+          <a class="dropdown-item" href="/auth/admin">Administrador Usuarios</a>
+           <a class="dropdown-item" href="/auth">Usuarios inactivos</a>
+        </div>
+      </div>
+      {{else}}
+        <!-- Usuario no logueado -->
+        <form action="/auth/login" method="GET">
+          <button class="btn btn-success" type="submit"><i class="fa-solid fa-user"></i></button>
+        </form>
+        {{#if showLoginMessage}}
+          <p class="login-message">Debe iniciar sesión para acceder al carrito</p>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </div>
+</nav>
+
+
+<div>
+  <h2 class="title bg-secondary">Productos</h2>
+</div>
+<div class="form">
+  <form id="order-form" class="order" action="/api/products" method="GET">
+    <button class="btn btn-secondary" type="submit" name="sort" value="asc">Ordenar Ascendente</button>
+    <button class="btn btn-secondary" type="submit" name="sort" value="desc">Ordenar Descendente</button>
+    <input type="hidden" name="cartId" value="{{cartId}}">
+  </form>
+  <form id="search-form" action="/api/products" method="GET">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Buscar por categoría" name="query">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </div>
+    </div>
+    <input type="hidden" name="cartId" value="{{cartId}}">
+  </form>
+</div>
+
+
+<div class="block" data-cart-id="{{cartId}}">
+  {{#if response.payload}}
+    {{#each response.payload}}
+      <div class="card" style="width: 300px;">
+        <img src="{{this.thumbnail}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p>Categoría: {{this.category}}</p>
+          <a class="btn btn-primary" href="/api/products/{{this._id}}">Ver detalles</a>
+          <form id="add-to-cart-form-{{this._id}}">
+            <input type="hidden" name="productId" value="{{this._id}}">
+           <button type="button" class="btn btn-danger add-to-cart-button" data-product-id="{{this._id}}">Agregar al carrito</button>
+
+          </form>
+          <div class="card-footer">
+            <small class="text-body-secondary">Precio: ${{this.price}}</small>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <ul class="pagination">
+    {{#if response.hasPrevPage}}
+      <li class="page-item">
+        <a class="page-link" href="{{response.prevLink}}&cartId={{cartId}}">Anterior</a>
+      </li>
+    {{/if}}
+    {{#if response.hasNextPage}}
+      <li class="page-item">
+        <a class="page-link" href="{{response.nextLink}}&cartId={{cartId}}">Siguiente</a>
+      </li>
+    {{/if}}
+  </ul>
+{{else}}
+  <p class="notProduct">No se encontraron productos.</p>
+{{/if}}
+
+<script src="/product.js"></script>
+<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/style.css" />
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+ 

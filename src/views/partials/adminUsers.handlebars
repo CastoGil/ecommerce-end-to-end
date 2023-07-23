@@ -1,0 +1,34 @@
+<h2 class="cart">Usuarios</h2>
+<table class="user">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+    <tr>
+      <td>{{this._id}}</td>
+      <td>{{this.first_name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.role}}</td>
+      <td>
+        <form action="/auth/admin/{{this._id}}/update-role" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+          <button class="btn btn-primary" type="submit">Cambiar Rol</button>
+        </form>
+        <form action="/auth/admin/delete/{{this._id}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<link rel="stylesheet" href="/style.css" />
+<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></

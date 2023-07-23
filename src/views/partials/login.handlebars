@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark bg-body-tertiary bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto"><i class="fa-solid fa-store"></i> TIENDA DE ROPA</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="title bg-secondary">Login</h2>
+  <div class="login-form">
+    {{#if error}}
+      <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+    {{#if success}}
+      <div class="alert alert-info">{{success}}</div>
+    {{/if}}
+    <form method="POST" action="/auth/login">
+      <div class="form-group">
+        <label class="" for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-success">Login</button>
+      <div class="forgot-password">
+        <a href="/auth/password/reset-request" class="btn btn-link">Olvidé mi contraseña</a>
+      </div>
+    </form>
+    <div>
+      <a href="/auth/github" class="btn btn-github btn-light">
+        <i class="fab fa-github"></i> Ingresar con GitHub
+      </a>
+    </div>
+    <p class="login-msg">Don't have an account? <a href="/auth/register">Register</a></p>
+  </div>
+</div>
+
+<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/style.css" />
+

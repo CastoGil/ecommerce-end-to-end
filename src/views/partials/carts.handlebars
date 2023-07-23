@@ -1,0 +1,45 @@
+<h1 class="store-title">My Ecommerce Store</h1>
+
+<section class="carts">
+  <h2 class="carts-title"><i class="fa-solid fa-cart-shopping"></i></h2>
+  {{#if cart.products.length}}
+    <table class="carts-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <div id="cart-container" data-cart-id="{{cartId}}">
+          {{#each cart.products}}
+            <tr class="products">
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>${{price}}</td>
+              <td>{{quantity}}</td>
+              <td><button class="delete-product" data-id="{{_id}}">Remove</button></td>
+            </tr>
+          {{/each}}
+        </div>
+      </tbody>
+    </table>
+    <div class="carts-summary">
+      <p class="carts-total">Total: ${{total}} </p>
+      <button class="btn btn-success" id="checkout">Pagar</button>
+    </div>
+  {{else}}
+    <p class="empty-cart">Your cart is empty.</p>
+  {{/if}}
+</section>
+
+</main>
+<footer>
+  <p>&copy; 2023 My Ecommerce Store. All rights reserved.</p>
+</footer>
+<script src="/carts.js"></script>
+<link rel="stylesheet" href="/style.css" />
+<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
