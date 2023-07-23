@@ -10,5 +10,7 @@ export const config= {
   PORT:process.env.PORT,
   NODE_ENV:process.env.NODE_ENV,
   cookieSecret:process.env.COOKIE_SECRET,
-  stripeSecret: process.env.STRIPE_SECRET
+  stripeSecret: process.env.STRIPE_SECRET,
+  adminEmail: process.env.ADMIN_EMAIL,
+  adminPassword: process.env.ADMIN_PASSWORD
 };

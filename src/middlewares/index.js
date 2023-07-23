@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+import { config } from "../config/env.config.js"
+const JWT_SECRET = config.jwtSecret;
+const ADMIN_EMAIL = config.adminEmail;
+const ADMIN_PASSWORD = config.adminPassword;
 
 export const admin = (req, res, next) => {
   const { email, password } = req.body;
