@@ -87,7 +87,7 @@ app.use((req, res, next) => {
   if (req.url === "/") {
     return res.redirect("/api/products");
   }
-  next();
+  next()
 });
 app.use("/api", mainRouter); // Manejador de rutas
 app.use("/", viewsRouter); // Ruta websocket
