@@ -12,5 +12,7 @@ export const config= {
   cookieSecret:process.env.COOKIE_SECRET,
   stripeSecret: process.env.STRIPE_SECRET,
   adminEmail: process.env.ADMIN_EMAIL,
-  adminPassword: process.env.ADMIN_PASSWORD
+  adminPassword: process.env.ADMIN_PASSWORD,
+  SUCCESS_URL: process.env.SUCCESS_URL,
+  CANCEL_URL: process.env.CANCEL_URL
 };

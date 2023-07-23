@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import { ticketService } from "../../services/ticketService.js";
 import { sendPurchaseConfirmationEmail } from "../../config/nodemailer.config.js";
+import { config } from "../../config/env.config.js";
 
-dotenv.config();
-const STRIPE_SECRET = process.env.STRIPE_SECRET;
+const STRIPE_SECRET = config.stripeSecret;
 const stripe = new Stripe(STRIPE_SECRET);
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = config.jwtSecret;
+const success_url= config.SUCCESS_URL
+const cancel_url= config.CANCEL_URL
 
 export const createSession = async (req, res) => {
   const { cartProducts } = req.body;
@@ -28,8 +30,8 @@ export const createSession = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:8080/api/payments/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:8080/api/payments/cancel",
+      success_url:success_url,
+      cancel_url: cancel_url,
     });
     if (!session || !session.id) {
       return res.status(500).json({ error: "Error al crear la sesión de pago" });
