@@ -107,7 +107,6 @@ const initializePassport = () => {
           const user = await userModel.findOne({
             email: profile.emails[0].value,
           });
-          console.log(user)
           if (user) {
             return done(null, user);
           } else {
