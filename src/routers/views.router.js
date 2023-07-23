@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 // Ruta principal vista de los productos en tabla
-router.get("/", viewProduct);
+router.get("/products", viewProduct);
 
 // Ruta websocket
 router.get("/realtimeproducts", realTimeProduct);
