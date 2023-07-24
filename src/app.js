@@ -85,7 +85,7 @@ app.use(compression({ brotli: { enabled: true, zlib: {} } }));
 app.use(cors())
 app.use((req, res, next) => {
   if (req.url === "/") {
-    return res.redirect("/api/products");
+    return res.redirect("/auth/login");
   }
   next()
 });
