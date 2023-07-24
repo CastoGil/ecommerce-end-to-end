@@ -5,36 +5,32 @@
   <ul>
     {{#each users}}
       <li>
-        <strong>Nombre:</strong> {{first_name}}, <strong>Email:</strong> {{email}}, <strong>Tipo de cuenta:</strong> {{accountType}}
+        <strong>Nombre:</strong> {{lookup this 'first_name'}}, <strong>Email:</strong> {{lookup this 'email'}}, <strong>Tipo de cuenta:</strong> {{lookup this 'accountType'}}
       </li>
     {{/each}}
   </ul>
 {{else}}
   <p>No hay usuarios registrados.</p>
 {{/if}}
-
+<div id="inactiveUsersSection">
 {{#if showInactive}}
-  <h2>Usuarios inactivos</h2>
-  {{#if inactiveUsers}}
-    <ul>
-      {{#each inactiveUsers}}
-        <li>
-          <strong>Nombre:</strong> {{first_name}}, <strong>Email:</strong> {{email}}, <strong>Tipo de cuenta:</strong> {{accountType}}
-        </li>
-      {{/each}}
-    </ul>
-    <!-- Botón para eliminar usuarios inactivos -->
-    <button id="deleteInactiveBtn" onclick="deleteInactiveUsers()">Eliminar usuarios inactivos</button>
-  {{else}}
-    <p>No hay usuarios inactivos.</p>
-  {{/if}}
-{{/if}}
 
-<script src="/userInactive.js"></script>
+    <h2>Usuarios inactivos</h2>
+    {{!-- Aquí se mostrarán los usuarios inactivos obtenidos desde el front-end --}}
+    <!-- Botón para eliminar usuarios inactivos --> 
+{{/if}}
+</div>
+<!-- Botón para obtener la lista de usuarios inactivos -->
+<button id="getInactiveBtn">Obtener usuarios inactivos</button>
+<button id="deleteInactiveBtn" onclick="deleteInactiveUsers()">Eliminar usuarios inactivos</button>
 <script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/style.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/userInactive.js"></script>
+
+
+
 
 

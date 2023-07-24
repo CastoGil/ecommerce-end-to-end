@@ -480,18 +480,30 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getInactiveUsers = async (req, res) => {
+  try {
+    const cutoffDate = new Date(Date.now() - 2 * 60 * 1000);
+    const inactiveUsers = await userService.getInactiveUsers(cutoffDate);
+    console.log(inactiveUsers)
+    res.json({ inactiveUsers })
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener los usuarios inactivos" });
+  }
+};
+
 const deleteInactiveUsers = async (req, res) => {
   try {
     const cutoffDate = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
     const inactiveUsers = await userService.getInactiveUsers(cutoffDate);
 
     for (const user of inactiveUsers) {
-      await sendAccountDeletionEmail(user.email);
+      await sendAccountDeletionEmail(user.email)
       await userService.deleteUser(user._id);
     }
 
     const userDtoList = await getAllUsersData();
-    res.render('allUsers', { users: userDtoList, showInactive: true });
+    res.render('allUsers', { users: userDtoList, showInactive: true, inactiveUsers });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al eliminar los usuarios inactivos" });
@@ -558,5 +570,6 @@ export {
   getAllUsersAdmin,
   deleteUserAdmin,
   updateRole,
-  github
+  github,
+  getInactiveUsers
 };

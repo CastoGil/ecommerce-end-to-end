@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
 import { upload } from "../utils.js";
-import { showLoginForm, processLoginForm, closeSession, showRegisterForm, processRegisterForm, showPasswordResetRequestForm, processPasswordResetRequest, showPasswordResetExpiredPage, showPasswordResetForm, processPasswordReset, changeUserRoleController, loadDocuments, getAllUsers, deleteInactiveUsers, getAllUsersAdmin, deleteUserAdmin, updateRole, github } from "../controllers/controllerDb/userController.js";
+import { showLoginForm, processLoginForm, closeSession, showRegisterForm, processRegisterForm, showPasswordResetRequestForm, processPasswordResetRequest, showPasswordResetExpiredPage, showPasswordResetForm, processPasswordReset, changeUserRoleController, loadDocuments, getAllUsers, deleteInactiveUsers, getAllUsersAdmin, deleteUserAdmin, updateRole, github, getInactiveUsers } from "../controllers/controllerDb/userController.js";
 import { admin,authorize } from "../middlewares/index.js";
 
 const router = express.Router();
@@ -48,8 +48,10 @@ router.get("/current", passport.authenticate("current", { session: false }), (re
 router.get("/github", passport.authenticate("github"));
 router.get("/github/callback", passport.authenticate("github", { failureRedirect: "/login" }), github);
 
+
 // Rutas de usuarios inactivos
 router.get("/", getAllUsers);
+router.get("/inactive", getInactiveUsers)
 router.delete("/", deleteInactiveUsers);
 
 // Rutas de administrador
