@@ -6,7 +6,7 @@ import { ticketController } from "../controllers/controllerDb/ticketController.j
 
 const router = express.Router();
 
-// Ruta de Carrito
+/// Ruta de Carrito
 router.post("/", passport.authenticate("current", { session: false }), cartController.createCart);
 router.get("/:cid", cartController.getCartById);
 router.post("/:cid/products/:pid", passport.authenticate("current", { session: false }), admin, authorize, cartController.addProductToCart);
