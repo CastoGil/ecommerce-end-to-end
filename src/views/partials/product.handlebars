@@ -56,24 +56,30 @@
   </div>
 </nav>
 
-
 <div>
   <h2 class="title bg-secondary">Productos</h2>
 </div>
 <div class="form">
+  <!-- Formulario para ordenar productos -->
   <form id="order-form" class="order" action="/api/products" method="GET">
     <button class="btn btn-secondary" type="submit" name="sort" value="asc">Ordenar Ascendente</button>
     <button class="btn btn-secondary" type="submit" name="sort" value="desc">Ordenar Descendente</button>
-    <input type="hidden" name="cartId" value="{{cartId}}">
+    {{#if cartId}}
+      <input type="hidden" name="cartId" value="{{cartId}}">
+    {{/if}}
   </form>
-  <form id="search-form" action="/api/products" method="GET">
+
+  <!-- Formulario para buscar productos por categoría -->
+  <form id="search-form" class="search" action="/api/products" method="GET">
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Buscar por categoría" name="query">
       <div class="input-group-append">
         <button class="btn btn-primary" type="submit">Buscar</button>
       </div>
     </div>
-    <input type="hidden" name="cartId" value="{{cartId}}">
+    {{#if cartId}}
+      <input type="hidden" name="cartId" value="{{cartId}}">
+    {{/if}}
   </form>
 </div>
 
@@ -116,12 +122,12 @@
   <p class="notProduct">No se encontraron productos.</p>
 {{/if}}
 
-<script src="/product.js"></script>
+
 <script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/style.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="/product.js"></script>
 
  

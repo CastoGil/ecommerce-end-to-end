@@ -10,7 +10,6 @@ deleteButtons.forEach((button) => {
     
     const productId = button.getAttribute('data-id');
     
-
     try {
       const response = await fetch(`/api/carts/${cartId}/products/${productId}`, {
         method: 'DELETE',

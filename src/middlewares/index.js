@@ -11,7 +11,7 @@ export const admin = (req, res, next) => {
   if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
     req.user = { role: "admin" };
     res.cookie("role", "admin", { httpOnly: true });
-    return res.redirect("/api/products");
+    return res.redirect("/api/products?sort=asc");
   }
   req.user = { role: "user" };
   next();

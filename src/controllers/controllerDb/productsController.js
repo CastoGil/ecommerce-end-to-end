@@ -22,27 +22,31 @@ export const getAllProductsController = async (req, res, next) => {
     const token = req.cookies.token || "";
     const admin = req.cookies.role || "";
     const cartId = req.query.cartId || null;
-    const response = await productService.getAllProducts(
-      query,
-      sort,
-      page,
-      limit
-    );
-    if (token) {
-      const user = jwt.verify(token, JWT_SECRET);
-      const data = {
-        response,
-        uid: user.Id,
-        first_name: user ? user.first_name : null,
-        role: user ? user.role : null,
-        token,
-        cartId,
-        showLoginMessage: false,
-      };
+
+    if (admin === "admin") {
+      // Si el usuario es administrador, incluimos el sorting y la búsqueda
+      const response = await productService.getAllProducts(query, sort, page, limit);
+      const data = { response, admin: "admin", showLoginMessage: !!cartId };
       res.render("products", data);
     } else {
-      const data = { response, admin, showLoginMessage: !!cartId };
-      res.render("products", data);
+      // Si el usuario no es administrador, se aplicará la lógica de usuarios normales
+      const response = await productService.getAllProducts(query, sort, page, limit);
+      if (token) {
+        const user = jwt.verify(token, JWT_SECRET);
+        const data = {
+          response,
+          uid: user.Id,
+          first_name: user ? user.first_name : null,
+          role: user ? user.role : null,
+          token,
+          cartId,
+          showLoginMessage: false,
+        };
+        res.render("products", data);
+      } else {
+        const data = { response, admin: "", showLoginMessage: !!cartId };
+        res.render("products", data);
+      }
     }
   } catch (error) {
     if (error instanceof CustomError) {
@@ -59,6 +63,8 @@ export const getAllProductsController = async (req, res, next) => {
     }
   }
 };
+
+
 
 export const getProductByIdController = async (req, res, next) => {
   try {
