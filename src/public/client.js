@@ -42,17 +42,18 @@ noteform.addEventListener("submit", async (e) => {
     description: description.value,
   };
 
-  const url = "http://localhost:8080/realtimeproducts";
+  // Obtiene la URL de la API oculta
+  const urlElement = document.getElementById("products-link");
+  const url = urlElement.textContent.trim();
+
   try {
     const response = await postData(url, data);
-      console.log(response)
-      if(response){
-        alert("producto agregado")
-        return
-      }else{
-        alert("no puedes agregar productos")
-        return
-      }
+    console.log(response)
+    if (response) {
+      alert("producto agregado")
+    } else {
+      alert("no puedes agregar productos")
+    }
   } catch (error) {
     console.log(error);
   }
@@ -82,7 +83,7 @@ socket.on("productos", async (data) => {
 });
 
 const deleteProduct = async (_id) => {
-  await fetch(`http://localhost:8080/realtimeproducts/${_id}`, {
+  await fetch(`${url}/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

@@ -1,6 +1,9 @@
 import { productModel } from "../../Dao/models/products.js";
 import { socketEmit, socketEmitBack } from "../../services/socket.js";
 import { sendPremiumUserProductDeletedEmail } from "../../config/nodemailer.config.js";
+import { config } from "../../config/env.config.js";
+const URL_PRODUCTS= config.URL_PRODUCTS
+
 //vista principal con los productos
 const viewProduct = async (req, res) => {
   try {
@@ -19,7 +22,7 @@ const viewProduct = async (req, res) => {
 const realTimeProduct = async (req, res) => {
   try {
     const products = await productModel.find();
-    res.render("realTimeProducts", { products });
+    res.render("realTimeProducts", { products , URL_PRODUCTS });
   } catch {
     return res.status(404).send("La ruta no se encontro");
   }
