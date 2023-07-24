@@ -33,7 +33,7 @@ addToCartButtons.forEach((button) => {
       if (response.ok) {
         alert('El producto se agregó al carrito correctamente.');
       } else {
-        alert('Hubo un error al agregar el producto al carrito.');
+        alert('Tienes que iniciar sesion para agregar productos al carrito');
       }
     } catch (error) {
       console.log(error);
