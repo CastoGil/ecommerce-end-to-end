@@ -9,23 +9,23 @@ Este es un proyecto de una aplicación web de e-commerce, donde los usuarios pue
 
 ## Configuración
 1. Crea un archivo `.env` en la raíz del proyecto y configura las siguientes variables de entorno:
-   
-MONGO_URI: Es la URL de conexión a la base de datos MongoDB. Esta variable se utiliza para conectar la aplicación a la base de datos y permite acceder y manipular los datos almacenados en ella.
-client_ID: Es el ID del cliente de la aplicación. En este caso, para ser utilizado para autenticar un servicio de terceros, GitHub.
-client_Secret: Es el secreto del cliente de la aplicación. Al igual que el client_ID, se utiliza para autenticar GitHub.
-callback_URL: Es la URL a la que se redireccionará después de que el usuario haya iniciado sesión en el servicio de terceros y haya dado su consentimiento. En este caso, para ser utilizado para la autenticación con GitHub.
-JWT_SECRET: Es la clave secreta utilizada para firmar y verificar los tokens de JSON Web (JWT) generados por la aplicación. Los JWT son utilizados para autenticar y autorizar a los usuarios.
-PORT: Es el número de puerto en el que se ejecutará la aplicación. En este caso, la aplicación se ejecutará en el puerto 8080.
-NODE_ENV: Es una variable de entorno que indica el entorno de ejecución de la aplicación. En este caso, está establecido como "production", lo que significa que la aplicación se ejecutará en modo de producción.
-COOKIE_SECRET: Es la clave secreta utilizada para firmar las cookies que se envían al navegador del usuario. Las cookies se utilizan para mantener el estado de la sesión y la autenticación del usuario.
-STRIPE_SECRET: Es el secreto utilizado para autenticarse con el servicio de pagos Stripe. Stripe es una plataforma de pagos en línea que permite a la aplicación procesar pagos de los usuarios.
-ADMIN_EMAIL: Es el correo electrónico del administrador de la aplicación. Puede utilizarse para acceder a funciones de administración y configuración.
-ADMIN_PASSWORD: Es la contraseña del administrador de la aplicación. Se utiliza para autenticar al administrador y acceder a funciones de administración.
-SUCCESS_URL: Es la URL a la que se redireccionará después de que un pago haya sido exitoso. En este caso, sera utilizada para gestionar pagos mediante Stripe.
-CANCEL_URL: Es la URL a la que se redireccionará después de que un pago haya sido cancelado. En este caso, también sera utilizada para gestionar pagos mediante Stripe.
-USER_EMAIL: Es el correo electrónico de un usuario registrado en la aplicación. Se utiliza para DEFINIR EL ENVIO DE CORREOS ELECTRONICOS a los usuarios.
-USER_PASS: Es la contraseña del usuario registrado en la aplicación. Se utiliza para HACER EL ENVIO DE CORREOS  a los usuarios.
-URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobre los productos disponibles en la aplicación.
+
+- MONGO_URI: Es la URL de conexión a la base de datos MongoDB.
+- CLIENT_ID: Es el ID del cliente de la aplicación utilizado para autenticar un servicio de terceros, en este caso, GitHub.
+- CLIENT_SECRET: Es el secreto del cliente de la aplicación utilizado para autenticar GitHub.
+- CALLBACK_URL: Es la URL a la que se redireccionará después de que el usuario haya iniciado sesión en GitHub y dado su consentimiento.
+- JWT_SECRET: Es la clave secreta utilizada para firmar y verificar los tokens de JSON Web (JWT) generados por la aplicación.
+- PORT: Es el número de puerto en el que se ejecutará la aplicación, en este caso, 8080.
+- NODE_ENV: Es una variable de entorno que indica el entorno de ejecución de la aplicación, en este caso, "production".
+- COOKIE_SECRET: Es la clave secreta utilizada para firmar las cookies enviadas al navegador del usuario.
+- STRIPE_SECRET: Es el secreto utilizado para autenticarse con el servicio de pagos Stripe.
+- ADMIN_EMAIL: Es el correo electrónico del administrador de la aplicación.
+- ADMIN_PASSWORD: Es la contraseña del administrador de la aplicación.
+- SUCCESS_URL: Es la URL a la que se redireccionará después de un pago exitoso.
+- CANCEL_URL: Es la URL a la que se redireccionará después de un pago cancelado.
+- USER_EMAIL: Es el correo electrónico de un usuario registrado en la aplicación, utilizado para enviar correos electrónicos a los usuarios.
+- USER_PASS: Es la contraseña del usuario registrado en la aplicación, utilizada para enviar correos electrónicos a los usuarios.
+- URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobre los productos disponibles en la aplicación.
 
 ## Uso
 1. Ejecuta el servidor: `npm start` o `npm run dev` (nodemon).
@@ -39,10 +39,10 @@ URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobr
 - Restablecimiento de contraseña por correo electrónico.
 - Administración de usuarios (solo para usuarios con rol de administrador).
 - Administración de productos (solo para usuarios con rol de administrador).
-- Pasarela de Pago con Stripe
-- Envio de Correos electronicos con Nodemailer
+- Pasarela de Pago con Stripe.
+- Envío de Correos electrónicos con Nodemailer.
 - Entre otras funcionalidades...
- 
+
 ## Algunas Tecnologías utilizadas
 - Node.js
 - Express.js
@@ -56,10 +56,10 @@ URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobr
 - Chai
 - Supertest
 - Winston
-- Entre otras tecnologias...
-  
+- Entre otras tecnologías...
+
 ## Estructura del Proyecto
-- El proyecto está organizado en varias carpetas: `controllers`, `middlewares`, `routes`, `views`, `utils`,`services` etc.
+- El proyecto está organizado en varias carpetas: `controllers`, `middlewares`, `routes`, `views`, `utils`, `services`, etc.
 
 ## Contribución
 - Si deseas contribuir al proyecto, sigue estos pasos:
@@ -69,6 +69,6 @@ URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobr
   4. Haz push a tu repositorio: `git push origin mi-contribucion`
   5. Crea un pull request para que revisemos tus cambios.
 
-## Autores
+## Autor
 - Casto Gil
 
