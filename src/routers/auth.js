@@ -50,9 +50,9 @@ router.get("/github/callback", passport.authenticate("github", { failureRedirect
 
 
 // Rutas de usuarios inactivos
-router.get("/", getAllUsers);
-router.get("/inactive", getInactiveUsers)
-router.delete("/", deleteInactiveUsers);
+router.get("/",admin, authorize, getAllUsers);
+router.get("/inactive",admin, authorize, getInactiveUsers)
+router.delete("/",admin, authorize, deleteInactiveUsers);
 
 // Rutas de administrador
 router.get("/admin", admin, authorize, getAllUsersAdmin);
