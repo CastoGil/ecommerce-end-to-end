@@ -1,14 +1,18 @@
 import nodemailer from "nodemailer";
 import { getLogger } from "../utils.js";
 const logger = getLogger();
+import { config } from "./env.config.js";
+const userEmail= config.USER_EMAIL 
+const userPass= config.USER_PASS
+
 // Función para enviar el correo electrónico//
 export const sendPasswordResetEmail = async (to, resetPasswordLink) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "casto782@gmail.com",
-        pass: "wtjzdeeieyqrkadf",
+        user: userEmail,
+        pass: userPass,
       },
       tls: {
         rejectUnauthorized: false,
@@ -25,7 +29,7 @@ export const sendPasswordResetEmail = async (to, resetPasswordLink) => {
         <p>Si no has solicitado este restablecimiento, puedes ignorar este correo electrónico.</p>
       `,
     };
-    
+
     await transporter.sendMail(mailOptions);
 
     logger.info("Correo electrónico enviado con éxito");
@@ -38,8 +42,8 @@ export const sendAccountDeletionEmail = async (email) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "casto782@gmail.com",
-        pass: "wtjzdeeieyqrkadf",
+        user: userEmail,
+        pass: userPass,
       },
       tls: {
         rejectUnauthorized: false,
@@ -47,7 +51,7 @@ export const sendAccountDeletionEmail = async (email) => {
     });
 
     const mailOptions = {
-      from: "casto782@gmail.com",
+      from: userEmail,
       to: email,
       subject: "Eliminación de cuenta",
       html: `
@@ -68,8 +72,8 @@ export const sendPremiumUserProductDeletedEmail = async (email, productName) => 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "casto782@gmail.com",
-        pass: "wtjzdeeieyqrkadf",
+        user: userEmail,
+        pass: userPass,
       },
       tls: {
         rejectUnauthorized: false,
@@ -77,7 +81,7 @@ export const sendPremiumUserProductDeletedEmail = async (email, productName) => 
     });
 
     const mailOptions = {
-      from: "casto782@gmail.com",
+      from: userEmail,
       to: email,
       subject: "Eliminación de producto",
       html: `
@@ -98,8 +102,8 @@ export const sendPurchaseConfirmationEmail = async (to, ticket) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "casto782@gmail.com",
-        pass: "wtjzdeeieyqrkadf",
+        user: userEmail,
+        pass: userPass,
       },
       tls: {
         rejectUnauthorized: false,
@@ -108,7 +112,7 @@ export const sendPurchaseConfirmationEmail = async (to, ticket) => {
 
     // Contenido del correo electrónico con la información del ticket
     const mailOptions = {
-      from: "casto782@gmail.com",
+      from: userEmail,
       to: to,
       subject: "Confirmación de compra",
       html: `

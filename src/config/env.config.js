@@ -14,5 +14,7 @@ export const config= {
   adminEmail: process.env.ADMIN_EMAIL,
   adminPassword: process.env.ADMIN_PASSWORD,
   SUCCESS_URL: process.env.SUCCESS_URL,
-  CANCEL_URL: process.env.CANCEL_URL
+  CANCEL_URL: process.env.CANCEL_URL,
+  userEmail: process.env.USER_EMAIL,
+  userPass: process.env.USER_PASS
 };

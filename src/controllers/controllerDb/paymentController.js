@@ -61,6 +61,7 @@ export const handleSuccess = async (req, res) => {
 
       
       const ticket = await ticketService.createTicket(user.email, session.amount_total / 100);
+      console.log(ticket)
       await sendPurchaseConfirmationEmail(user.email, ticket);
 
      
