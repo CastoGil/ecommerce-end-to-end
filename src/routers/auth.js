@@ -54,6 +54,7 @@ router.get("/",admin, authorize, getAllUsers);
 router.get("/inactive",admin, authorize, getInactiveUsers)
 router.delete("/",admin, authorize, deleteInactiveUsers);
 
+
 // Rutas de administrador
 router.get("/admin", admin, authorize, getAllUsersAdmin);
 router.post("/admin/delete/:id", admin, authorize, deleteUserAdmin);
