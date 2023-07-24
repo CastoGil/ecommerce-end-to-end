@@ -8,6 +8,8 @@ const code = document.querySelector("#code");
 const stock = document.querySelector("#stock");
 const category = document.querySelector("#category");
 const table = document.getElementById("myTable");
+const urlElement = document.getElementById("products-link");
+let url = urlElement.textContent.trim();
 
 async function postData(url = "", data = {}) {
   try {
@@ -42,9 +44,7 @@ noteform.addEventListener("submit", async (e) => {
     description: description.value,
   };
 
-  // Obtiene la URL de la API oculta
-  const urlElement = document.getElementById("products-link");
-  const url = urlElement.textContent.trim();
+     url = urlElement.textContent.trim();
 
   try {
     const response = await postData(url, data);
