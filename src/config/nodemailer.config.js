@@ -7,6 +7,7 @@ const userPass= config.USER_PASS
 
 // Función para enviar el correo electrónico//
 export const sendPasswordResetEmail = async (to, resetPasswordLink) => {
+  
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -19,7 +20,7 @@ export const sendPasswordResetEmail = async (to, resetPasswordLink) => {
       },
     });
     const mailOptions = {
-      from: "casto782@gmail.com",
+      from: userEmail,
       to: to,
       subject: "Restablecimiento de contraseña",
       html: `

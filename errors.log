@@ -45,3 +45,20 @@
 {"level":"info","message":"Connected to database"}
 {"level":"info","message":"Server listening on port 8080"}
 {"level":"info","message":"Connected to database"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"code":"EAUTH","command":"API","level":"warning","message":"Error al enviar el correo electrónico Missing credentials for \"PLAIN\"","stack":"Error: Missing credentials for \"PLAIN\"\n    at SMTPConnection._formatError (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:790:19)\n    at SMTPConnection.login (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:444:38)\n    at C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-transport\\index.js:272:32\n    at SMTPConnection.<anonymous> (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:213:17)\n    at Object.onceWrapper (node:events:641:28)\n    at SMTPConnection.emit (node:events:527:28)\n    at SMTPConnection._actionEHLO (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1331:14)\n    at SMTPConnection._processResponse (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:953:20)\n    at SMTPConnection._onData (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:755:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:193:44)"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"code":"EAUTH","command":"API","level":"warning","message":"Error al enviar el correo electrónico Missing credentials for \"PLAIN\"","stack":"Error: Missing credentials for \"PLAIN\"\n    at SMTPConnection._formatError (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:790:19)\n    at SMTPConnection.login (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:444:38)\n    at C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-transport\\index.js:272:32\n    at SMTPConnection.<anonymous> (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:213:17)\n    at Object.onceWrapper (node:events:641:28)\n    at SMTPConnection.emit (node:events:527:28)\n    at SMTPConnection._actionEHLO (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:1331:14)\n    at SMTPConnection._processResponse (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:953:20)\n    at SMTPConnection._onData (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:755:14)\n    at TLSSocket.SMTPConnection._onSocketData (C:\\Users\\Casto\\OneDrive\\Escritorio\\ProyectoFinalBack-end\\node_modules\\nodemailer\\lib\\smtp-connection\\index.js:193:44)"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
+{"level":"info","message":"Correo electrónico enviado con éxito"}

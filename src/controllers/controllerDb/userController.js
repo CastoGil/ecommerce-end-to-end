@@ -225,12 +225,13 @@ const processPasswordResetRequest = async (req, res) => {
     user.resetTokenExpiration = Date.now() + 3600000; //
     await user.save();
 
-   
+    console.log(user.email)
     const resetPasswordLink = `${req.protocol}://${req.get(
       "host"
     )}/auth/password/reset/${resetToken}`;
-
+    
     await sendPasswordResetEmail(user.email, resetPasswordLink);
+    console.log(resetPasswordLink)
     res.render("login", {
       success:
         "Se ha enviado un correo con las instrucciones para restablecer la contraseña",
