@@ -484,7 +484,6 @@ const getInactiveUsers = async (req, res) => {
   try {
     const cutoffDate = new Date(Date.now() - 2 * 60 * 1000);
     const inactiveUsers = await userService.getInactiveUsers(cutoffDate);
-    console.log(inactiveUsers)
     res.json({ inactiveUsers })
   } catch (error) {
     console.error(error);
