@@ -1,15 +1,8 @@
 <!-- NavBar 2 -->
-<!-- Agrega esto antes de tu script actual -->
 
-
-<style>
-  .table td, .table th { vertical-align: middle; } h1 { color: blue; } hr {
-  background-color: #ddd; } .jumbotron { min-height: 50vh; } /* Estilos para la
-  tabla */ .table-responsive { max-height: 1000px; /* Ajusta esta altura según
-  tus necesidades */ overflow-y: auto; }
-</style>
-
-<title>Tienda de Ropa - Vista de Productos</title>
+<title>
+  Tienda de Ropa - Vista de Productos
+</title>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid mx-3">
@@ -68,21 +61,43 @@
 
 <!-- Contenido principal -->
 <div class="jumbotron">
-  <h1>Vista de Productos</h1>
+  <h1 class="mb-0 title-login">
+    Vista de Productos
+  </h1>
   <br />
-  <a id="products-link" style="display: none;">{{URL_PRODUCTS}}</a>
+  <a id="products-link" style="display: none;">
+    {{URL_PRODUCTS}}
+  </a>
   <div class="table-responsive">
     <table id="myTable" class="table table-bordered border-primary">
       <thead class="bg-danger text-white">
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Thumbnail</th>
-        <th>Code</th>
-        <th>Stock</th>
-        <th>Category</th>
-        <th>Actions</th>
+        <th>
+          ID
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Price
+        </th>
+        <th>
+          Thumbnail
+        </th>
+        <th>
+          Code
+        </th>
+        <th>
+          Stock
+        </th>
+        <th>
+          Category
+        </th>
+        <th>
+          Actions
+        </th>
       </thead>
       <tbody>
         <!-- Aquí se generarán las filas de la tabla dinámicamente mediante JavaScript -->
@@ -101,3 +116,4 @@
   crossorigin="anonymous"
 />
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="/style.css" />

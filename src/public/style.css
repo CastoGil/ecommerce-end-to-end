@@ -1,10 +1,31 @@
-*{
+* {
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
-  
 }
+.table td,
+.table th {
+  vertical-align: middle;
+}
+h1 {
+  color: blue;
+}
+hr {
+  background-color: #ddd;
+}
+.jumbotron {
+  min-height: 50vh;
+} /* Estilos para la
+  tabla */
 
+.table-responsive {
+  max-height: 1000px; /* Ajusta esta altura según
+  tus necesidades */
+  overflow-y: auto;
+}
+.view{
+  margin-bottom: 0%;
+}
 h2.bg-dark {
   color: rgb(255, 255, 255);
   text-align: center;
@@ -29,9 +50,8 @@ body {
   border-style: none;
   padding: 0%;
   margin: 0%;
-  text-decoration:none;
+  text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
-  
 }
 
 #contentWrap {
@@ -78,12 +98,12 @@ h3 {
 .login {
   color: white;
 }
-.sesion{
-  display:flex;
+.sesion {
+  display: flex;
   margin-top: 10px;
 }
 
-.sesion a{
+.sesion a {
   text-decoration: none;
   border-bottom: 1px solid #000000;
   color: inherit;
@@ -91,75 +111,79 @@ h3 {
 .sesion a.github {
   color: inherit; /* Hereda el color del texto del contenedor */
 }
-a.github{
-  border:none;
-  
+a.github {
+  border: none;
 }
-.git:hover{
+.git:hover {
   background-color: #000000;
-  color :white;
+  color: white;
 }
-.git{
-  background-color: #f1e9db
+.git {
+  background-color: #f1e9db;
 }
 .form-control {
-  width: 100%; 
+  width: 100%;
 }
-div.container-fluid{
-text-align: center;
-
+div.container-fluid {
+  text-align: center;
 }
 
-p.login.card-text{
+p.login.card-text {
   margin-top: auto;
 }
-h2.title.bg-secondary{
+h2.title.bg-secondary {
   color: white;
   text-align: center;
   padding: 10px;
 }
-a.navbar-brand.mx-auto{
-  margin-left: 0%! important;
+a.navbar-brand.mx-auto {
+  margin-left: 0% !important;
 }
-.roleUser{
+.roleUser {
   color: white;
   text-align: center;
   margin-right: 10px;
-
 }
 
-.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+.input-group
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+    .valid-feedback
+  ):not(.invalid-tooltip):not(.invalid-feedback) {
   margin-left: 2px;
 }
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
   padding-left: 0px;
   padding-right: 0px;
 }
-p.login-msg{
-margin-top:15px; 
-color: black;
+p.login-msg {
+  margin-top: 15px;
+  color: black;
 }
-.login-msg a{
+.login-msg a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  border-bottom: 1px solid #000000
+  border-bottom: 1px solid #000000;
 }
-div.sesion.text-center.register{
+div.sesion.text-center.register {
   margin-bottom: 5%;
 }
-.login-msg a:hover{
-  color:rgb(206, 206, 207);
+.login-msg a:hover {
+  color: rgb(206, 206, 207);
 }
-.form-group p{
+.form-group p {
   color: rgb(0, 0, 0);
   border-bottom: 2px solid #f1e9db;
   margin-bottom: 40px;
-  
 }
-.ligth{
-  background-color:#f1e9db;
+.ligth {
+  background-color: #f1e9db;
 }
-.ligth:hover{
+.ligth:hover {
   background-color: black;
   color: white;
 }
@@ -175,7 +199,7 @@ div.sesion.text-center.register{
   color: #fff; /* Cambio de color del texto en hover */
 }
 
-.terms{
+.terms {
   color: rgb(0, 0, 0);
   font-size: 12px;
   text-align: justify;
@@ -183,63 +207,63 @@ div.sesion.text-center.register{
 /* Estilos para la barra de navegación */
 .navbar {
   background-color: #343a40;
-  padding: 10px; 
+  padding: 10px;
 }
 
 .navbar-brand {
   color: #fff;
   font-size: 24px;
 }
-.logout{
-  margin:0%
+.logout {
+  margin: 0%;
 }
-p.roleUser{
+p.roleUser {
   margin-top: 0%;
   margin-bottom: 0%;
 }
-p.login{
-  margin: 0%
+p.login {
+  margin: 0%;
 }
 .roleUser,
 .login {
-  color: #fff; 
+  color: #fff;
 }
-.title-login{
+.title-login {
   background-color: #f1e9db;
   height: 100px;
   text-align: left;
   padding-top: 30px;
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   margin-bottom: 4%;
   font-size: 25px;
   padding-left: 50px;
 }
-.title-top{
+.title-top {
   background-color: #716a5c;
   height: 50px;
   text-align: center;
   padding-top: 20px;
-  color:white;
+  color: white;
   margin: 0%;
   font-size: 15px;
 }
 .login {
-  font-size: 18px; 
+  font-size: 18px;
 }
-.link-login{
+.link-login {
   margin-top: 20px;
 }
-.form-group{
-margin-left: 10px;
-margin-top: 10px;
+.form-group {
+  margin-left: 10px;
+  margin-top: 10px;
 }
 .btn-success,
 .btn-outline-danger {
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 .cart {
-  margin-left: 20px; 
+  margin-left: 20px;
   background-color: red;
 }
 
@@ -273,7 +297,12 @@ margin-top: 10px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Cambia el último valor para ajustar la opacidad */
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Cambia el último valor para ajustar la opacidad */
   opacity: 0;
   transition: opacity 0.5s linear; /* Agrega una transición suave */
   display: flex;
@@ -288,8 +317,7 @@ margin-top: 10px;
   opacity: 1;
 }
 
-
-.card-border{
+.card-border {
   padding: 0px;
 }
 @media (min-width: 768px) {
@@ -298,32 +326,32 @@ margin-top: 10px;
   }
 }
 .custom-display-2 {
-  font-size: 2.5rem; 
-  color: white;/* Puedes ajustar este valor según tus preferencias */
+  font-size: 2.5rem;
+  color: white; /* Puedes ajustar este valor según tus preferencias */
 }
 .title {
-  background-color: #f8f9fa; 
-  padding: 20px; 
+  background-color: #f8f9fa;
+  padding: 20px;
   margin-top: 20px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 
 .block {
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 20px; 
-  justify-content: center; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .card {
   width: auto;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .card-img-top {
   width: 350px;
-  max-height: 300px; 
-  object-fit: cover; 
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .card-title {
@@ -344,14 +372,14 @@ margin-top: 10px;
   width: 14rem;
 }
 .card-footer {
-  padding-top: 10px; 
-  color: #6c757d; 
-  font-size: 12px 
+  padding-top: 10px;
+  color: #6c757d;
+  font-size: 12px;
 }
 
 .pagination {
   margin-top: 20px;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .page-link {
@@ -359,24 +387,24 @@ margin-top: 10px;
 }
 
 .page-link:hover {
-  color: #0056b3; 
+  color: #0056b3;
 }
-.text-body-secondary{
-font-size: 14px;
+.text-body-secondary {
+  font-size: 14px;
 }
-.notProduct{
-  color: white
+.notProduct {
+  color: white;
 }
-.form{
+.form {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.input-group{
+.input-group {
   align-items: center;
 }
-.order{
- margin-bottom: 16px;
+.order {
+  margin-bottom: 16px;
 }
 .labelImg {
   font-weight: bold;
@@ -388,7 +416,7 @@ font-size: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-style:solid;
+  border-style: solid;
   border-color: #fff;
   padding: 10px;
   border-radius: 10px;
@@ -430,13 +458,12 @@ font-size: 14px;
   opacity: 0;
   transition: opacity 0.3s;
   width: 40%;
-  height:6%;
+  height: 6%;
   font-size: 0.55rem;
 }
 
 .product-card:hover .add-to-cart-button {
   opacity: 1;
- 
 }
 
 .btnDocument:hover {
@@ -453,8 +480,8 @@ font-size: 14px;
 .missing-documents {
   color: orange;
 }
-.changeRole{
-  background-color: #4CAF50;
+.changeRole {
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -465,11 +492,12 @@ font-size: 14px;
 .changeRole:hover {
   background-color: #45a049;
 }
-.user{
+.user {
   width: 100%;
   border-collapse: collapse;
 }
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -478,11 +506,11 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
-.editUser{
+.editUser {
   text-decoration: none;
   color: #ffffff;
 }
-.delete{
+.delete {
   padding: 5px 10px;
   background-color: #007bff;
   color: #fff;
@@ -581,7 +609,7 @@ header {
 
 .payment {
   margin: 0;
-  color: black
+  color: black;
 }
 
 .pay {
@@ -642,6 +670,6 @@ footer {
 }
 
 /* Otros estilos que puedas necesitar */
-li{
+li {
   color: white;
 }
