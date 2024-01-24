@@ -11,8 +11,15 @@
       <i class="fa-solid fa-store"></i>
       TIENDA DE ROPA
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -40,116 +47,137 @@
           </a>
         </li>
         {{#if admin}}
-        <!-- Si el usuario es admin, deshabilitar el botón del carrito -->
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">
-            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
-          </a>
-        </li>
+          <!-- Si el usuario es admin, deshabilitar el botón del carrito -->
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">
+              <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+            </a>
+          </li>
         {{else}}
-        <!-- Si no es admin, mostrar normalmente el botón del carrito -->
-        <li class="nav-item">
-          <a class="nav-link" href="/api/carts/{{cartId}}">
-            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
-          </a>
-        </li>
+          <!-- Si no es admin, mostrar normalmente el botón del carrito -->
+          <li class="nav-item">
+            <a class="nav-link" href="/api/carts/{{cartId}}">
+              <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+            </a>
+          </li>
         {{/if}}
 
         {{#if token}}
-        <!-- Usuario logueado -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/chat?cartId={{cartId}}">
-                Chat
-              </a></li>
-            <li><a class="dropdown-item" href="/realtimeproducts?cartId={{cartId}}">
-                Productos en Tiempo Real
-              </a></li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li><a class="dropdown-item" href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}">
-                Subir Documentos
-              </a></li>
-            <li><a class="dropdown-item" href="/auth/users/premium/{{uid}}?cartId={{cartId}}">
-                Cambiar a Premium
-              </a></li>
-          </ul>
-        </li>
+          <!-- Usuario logueado -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Opciones
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/chat?cartId={{cartId}}">
+                  Chat
+                </a></li>
+              <li><a
+                  class="dropdown-item"
+                  href="/realtimeproducts?cartId={{cartId}}"
+                >
+                  Productos en Tiempo Real
+                </a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a
+                  class="dropdown-item"
+                  href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}"
+                >
+                  Subir Documentos
+                </a></li>
+              <li><a
+                  class="dropdown-item"
+                  href="/auth/users/premium/{{uid}}?cartId={{cartId}}"
+                >
+                  Cambiar a Premium
+                </a></li>
+            </ul>
+          </li>
         {{else}}
-        {{#if admin}}
-        <!-- Usuario administrador logueado -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/realtimeproducts">
-                Productos en Tiempo Real
-              </a></li>
-            <li><a class="dropdown-item" href="/auth/admin">
-                Administrador Usuarios
-              </a></li>
-            <li>
-              <hr class="dropdown-divider" />
+          {{#if admin}}
+            <!-- Usuario administrador logueado -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Opciones
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/realtimeproducts">
+                    Productos en Tiempo Real
+                  </a></li>
+                <li><a class="dropdown-item" href="/auth/admin">
+                    Administrador Usuarios
+                  </a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="/auth">
+                    Usuarios inactivos
+                  </a></li>
+              </ul>
             </li>
-            <li><a class="dropdown-item" href="/auth">
-                Usuarios inactivos
-              </a></li>
-          </ul>
-        </li>
-        {{/if}}
+          {{/if}}
         {{/if}}
       </ul>
-      
+
       <!-- Sección derecha (Usuario logueado o no logueado) -->
       <div class="navbar-nav ms-auto">
         {{#if token}}
-        <!-- Usuario logueado -->
-        <div class="d-flex align-items-center ms-auto">
-          <p class="roleUser nav-item mb-0">
-            <i class="fa-solid fa-user"></i>
-            {{role}}
-          </p>
-          <p class="login nav-item mb-0 ms-2">
-            {{first_name}}
-          </p>
-          <form action="/auth/logout" method="GET" class="nav-item">
-            <button class="btn btn-success" type="submit">
-              <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
-            </button>
-          </form>
-        </div>
+          <!-- Usuario logueado -->
+          <div class="d-flex align-items-center ms-auto">
+            <p class="roleUser nav-item mb-0">
+              <i class="fa-solid fa-user"></i>
+              {{role}}
+            </p>
+            <p class="login nav-item mb-0 ms-2">
+              {{first_name}}
+            </p>
+            <form action="/auth/logout" method="GET" class="nav-item">
+              <button class="btn btn-success" type="submit">
+                <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+              </button>
+            </form>
+          </div>
         {{else}}
-        {{#if admin}}
-        <!-- Usuario administrador logueado -->
-        <div class="d-flex align-items-center ms-auto">
-          <p class="roleUser nav-item">
-            <i class="fa-solid fa-user"></i>
-            {{admin}}
-          </p>
-          <form action="/auth/logout" method="GET" class="nav-item">
-            <button class="btn btn-success" type="submit">
-              <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
-            </button>
-          </form>
-        </div>
-        {{else}}
-        <!-- Usuario no logueado -->
-        <form action="/auth/login" method="GET" class="navbar-nav">
-          <button class="btn btn-success" type="submit">
-            <i class="fa-solid fa-user"></i>
-          </button>
-        </form>
-        {{#if showLoginMessage}}
-        <p class="login-message nav-item">
-          Debe iniciar sesión para acceder al carrito
-        </p>
-        {{/if}}
-        {{/if}}
+          {{#if admin}}
+            <!-- Usuario administrador logueado -->
+            <div class="d-flex align-items-center ms-auto">
+              <p class="roleUser nav-item">
+                <i class="fa-solid fa-user"></i>
+                {{admin}}
+              </p>
+              <form action="/auth/logout" method="GET" class="nav-item">
+                <button class="btn btn-success" type="submit">
+                  <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+                </button>
+              </form>
+            </div>
+          {{else}}
+            <!-- Usuario no logueado -->
+            <form action="/auth/login" method="GET" class="navbar-nav">
+              <button class="btn btn-success" type="submit">
+                <i class="fa-solid fa-user"></i>
+              </button>
+            </form>
+            {{#if showLoginMessage}}
+              <p class="login-message nav-item">
+                Debe iniciar sesión para acceder al carrito
+              </p>
+            {{/if}}
+          {{/if}}
         {{/if}}
       </div>
     </div>
@@ -158,8 +186,10 @@
 
 <!-- Imagen top -->
 <div class="container-fluid">
-  <img class="img-nav"
-    src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+  <img
+    class="img-nav"
+    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  />
   <div class="overlay">
     <p class="overlay_off">
       REBAJAS HASTA 40% OFF
@@ -185,7 +215,12 @@
   <div class="d-flex align-items-center justify-content-center">
     <div class="card-group">
       <div class="card card1">
-        <img src="/img/delivery.png" class="card-img-top card-img-top1 img-fluid" alt="delivery" style="width: 100%; height: auto;">
+        <img
+          src="/img/delivery.png"
+          class="card-img-top card-img-top1 img-fluid"
+          alt="delivery"
+          style="width: 100%; height: auto;"
+        />
         <div class="card-body">
           <h5 class="card-title">
             Envio Gratis
@@ -196,7 +231,12 @@
         </div>
       </div>
       <div class="card card1">
-        <img src="/img/tienda.png" class="card-img-top card-img-top1 img-fluid" alt="tienda" style="width: 100%; height: auto;">
+        <img
+          src="/img/tienda.png"
+          class="card-img-top card-img-top1 img-fluid"
+          alt="tienda"
+          style="width: 100%; height: auto;"
+        />
         <div class="card-body">
           <h5 class="card-title">
             Retiro en Sucursales Andreani
@@ -207,7 +247,12 @@
         </div>
       </div>
       <div class="card card1">
-        <img src="/img/devolucion.png" class="card-img-top card-img-top1 img-fluid" alt="devolución" style="width: 100%; height: auto;">
+        <img
+          src="/img/devolucion.png"
+          class="card-img-top card-img-top1 img-fluid"
+          alt="devolución"
+          style="width: 100%; height: auto;"
+        />
         <div class="card-body">
           <h5 class="card-title">
             Devolucion Gratis
@@ -227,8 +272,12 @@
     <div class="card card-border border-0 m-0">
       <img
         src="https://img.freepik.com/foto-gratis/hombre-joven-camisa-elegir-ropa-centro-comercial-o-tienda-ropa_23-2148175648.jpg?w=740&t=st=1705459019~exp=1705459619~hmac=b15043f94b535219aeb8537efc932057139925f65926c7bf52e5b17ae0625906"
-        class="card-img w-100" alt="..." />
-      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        class="card-img w-100"
+        alt="..."
+      />
+      <div
+        class="card-img-overlay d-flex align-items-center justify-content-center"
+      >
         <h5 class="custom-display-2">
           HASTA 20%
         </h5>
@@ -238,8 +287,12 @@
     <div class="card card-border border-0 m-0">
       <img
         src="https://img.freepik.com/foto-gratis/mujer-mirando-blusa_23-2147688758.jpg?w=740&t=st=1705459191~exp=1705459791~hmac=1ec938ad92d9fef3c381d26ed517ded13e6910f45772169a849694e231595106"
-        class="card-img w-100" alt="..." />
-      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        class="card-img w-100"
+        alt="..."
+      />
+      <div
+        class="card-img-overlay d-flex align-items-center justify-content-center"
+      >
         <h5 class="custom-display-2">
           HASTA 30%
         </h5>
@@ -249,8 +302,12 @@
     <div class="card card-border border-0 m-0 text-bg-dark">
       <img
         src="https://img.freepik.com/foto-gratis/mejores-amigos-juntos-pasan-tiempo-dos-hermosas-chicas-hacen-compras-tienda-ropa-vestian-misma-ropa_146671-15090.jpg?w=740&t=st=1705459150~exp=1705459750~hmac=14452a44d35ca569f745271361d5bc826340b07367d3912bd601f67418ae97ad"
-        class="card-img w-100" alt="..." />
-      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        class="card-img w-100"
+        alt="..."
+      />
+      <div
+        class="card-img-overlay d-flex align-items-center justify-content-center"
+      >
         <h5 class="custom-display-2">
           HASTA 40%
         </h5>
@@ -270,14 +327,19 @@
       Ordenar Descendente
     </button>
     {{#if cartId}}
-    <input type="hidden" name="cartId" value="{{cartId}}" />
+      <input type="hidden" name="cartId" value="{{cartId}}" />
     {{/if}}
   </form>
 
   <!-- Formulario para buscar productos por categoría -->
   <form id="search-form" class="search" action="/api/products" method="GET">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Buscar por categoría" name="query" />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por categoría"
+        name="query"
+      />
       <div class="input-group-append">
         <button class="btn btn-primary" type="submit">
           Buscar
@@ -285,56 +347,69 @@
       </div>
     </div>
     {{#if cartId}}
-    <input type="hidden" name="cartId" value="{{cartId}}" />
+      <input type="hidden" name="cartId" value="{{cartId}}" />
     {{/if}}
   </form>
 </div>
 
 <!-- Card de Productos -->
-<div class="container-fluid block" style="margin-bottom: 30px" data-cart-id="{{cartId}}">
+<div
+  class="container-fluid block"
+  style="margin-bottom: 30px"
+  data-cart-id="{{cartId}}"
+>
   {{#if response.payload}}
-  {{#each response.payload}}
-  <div class="card mb-4 m-0 product-card">
-    <a href="/api/products/{{this._id}}" class="card-link">
-      <img src="{{this.thumbnail}}" class="card-img-top" alt="..." />
-    </a>
-    <div class="card-body">
-      <h5 class="card-title">{{this.title}}</h5>
-      <p>Categoría: {{this.category}}</p>
-      <small class="text-body-secondary">Precio: ${{this.price}}</small>
-      <form id="add-to-cart-form-{{this._id}}">
-        <input type="hidden" name="productId" value="{{this._id}}" />
-        <button type="button" class="btn btn-danger add-to-cart-button" data-product-id="{{this._id}}">
-          AÑADIR AL CARRITO
-        </button>
-      </form>
-    </div>
-  </div>
-  {{/each}}
-  <ul class="pagination">
-    {{#if response.hasPrevPage}}
-    <li class="page-item">
-      <a class="page-link" href="{{response.prevLink}}&cartId={{cartId}}">
-        Anterior
-      </a>
-    </li>
-    {{/if}}
-    {{#if response.hasNextPage}}
-    <li class="page-item">
-      <a class="page-link" href="{{response.nextLink}}&cartId={{cartId}}">
-        Siguiente
-      </a>
-    </li>
-    {{/if}}
-  </ul>
+    {{#each response.payload}}
+      <div class="card mb-4 m-0 product-card">
+        <a href="/api/products/{{this._id}}" class="card-link">
+          <img src="{{this.thumbnail}}" class="card-img-top" alt="..." />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p>Categoría: {{this.category}}</p>
+          <small class="text-body-secondary">Precio: ${{this.price}}</small>
+          <form id="add-to-cart-form-{{this._id}}">
+            <input type="hidden" name="productId" value="{{this._id}}" />
+            <button
+              type="button"
+              class="btn btn-danger add-to-cart-button"
+              data-product-id="{{this._id}}"
+            >
+              AÑADIR AL CARRITO
+            </button>
+          </form>
+        </div>
+      </div>
+    {{/each}}
+    <ul class="pagination">
+      {{#if response.hasPrevPage}}
+        <li class="page-item">
+          <a class="page-link" href="{{response.prevLink}}&cartId={{cartId}}">
+            Anterior
+          </a>
+        </li>
+      {{/if}}
+      {{#if response.hasNextPage}}
+        <li class="page-item">
+          <a class="page-link" href="{{response.nextLink}}&cartId={{cartId}}">
+            Siguiente
+          </a>
+        </li>
+      {{/if}}
+    </ul>
   {{else}}
-  <p class="notProduct">No se encontraron productos.</p>
+    <p class="notProduct">No se encontraron productos.</p>
   {{/if}}
 </div>
 
-<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
+<script
+  src="https://kit.fontawesome.com/48d346ada8.js"
+  crossorigin="anonymous"
+></script>
 <link rel="stylesheet" href="/style.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+></script>
 
 <script src="/product.js"></script>

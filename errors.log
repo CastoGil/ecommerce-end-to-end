@@ -1362,3 +1362,5 @@
 {"level":"info","message":"Connected to database"}
 {"level":"info","message":"Nueva Conexion establecida! N6up2jB8qjB0B_y-AAAB"}
 {"level":"info","message":"user disconnet"}
+{"level":"info","message":"Server listening on port 8080"}
+{"level":"info","message":"Connected to database"}
