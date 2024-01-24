@@ -11,7 +11,7 @@ const viewProduct = async (req, res) => {
       .find({})
       .lean()
       .then((products) => {
-        res.render("home", { products });
+        res.render("home", { products});
       });
   } catch {
     return res.status(404).send("La ruta no se encontro");
@@ -21,8 +21,9 @@ const viewProduct = async (req, res) => {
 
 const realTimeProduct = async (req, res) => {
   try {
+    const cartId = req.query.cartId || null
     const products = await productModel.find();
-    res.render("realTimeProducts", { products , URL_PRODUCTS });
+    res.render("realTimeProducts", { products , URL_PRODUCTS , cartId});
   } catch {
     return res.status(404).send("La ruta no se encontro");
   }

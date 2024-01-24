@@ -1,4 +1,49 @@
-<h1 class="store-title">My Ecommerce Store</h1>
+<!-- NavBar 2 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/api/products?cartId={{cartId}}">
+      <i class="fa-solid fa-store"></i>
+      TIENDA DE ROPA
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenido del menú -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">
+            REBAJAS
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Mujeres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Hombres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Niños
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <section class="carts">
   <h2 class="carts-title"><i class="fa-solid fa-cart-shopping"></i></h2>
@@ -21,7 +66,10 @@
               <td>{{description}}</td>
               <td>${{price}}</td>
               <td>{{quantity}}</td>
-              <td><button class="delete-product" data-id="{{_id}}">Remove</button></td>
+              <td><button
+                  class="delete-product"
+                  data-id="{{_id}}"
+                >Remove</button></td>
             </tr>
           {{/each}}
         </div>
@@ -36,10 +84,9 @@
   {{/if}}
 </section>
 
-</main>
-<footer>
-  <p>&copy; 2023 My Ecommerce Store. All rights reserved.</p>
-</footer>
 <script src="/carts.js"></script>
 <link rel="stylesheet" href="/style.css" />
-<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
+<script
+  src="https://kit.fontawesome.com/48d346ada8.js"
+  crossorigin="anonymous"
+></script>

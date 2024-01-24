@@ -1,30 +1,179 @@
-  <nav class="navbar navbar-dark bg-body-tertiary bg-dark">
+  <!-- NavBar 2-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto"><i class="fa-solid fa-store"></i> TIENDA DE ROPA </a>
-    {{#if token}}
-    <div>
-      <p class="roleUser card-text"><i class="fa-solid fa-user"></i> {{ role }} </p>
-    </div>
-    <p class="login card-text">Bienvenido {{ first_name }}</p>
-    <form action="/auth/logout" method="GET">
-      <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-    </form>
-    {{else}}
-      {{#if admin}}
-      <div>
-        <p class="login card-text"><i class="fa-solid fa-user"></i> {{ admin }} </p>
+    <a class="navbar-brand" href="/api/products?cartId={{cartId}}">
+      <i class="fa-solid fa-store"></i>
+      TIENDA DE ROPA
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenido del menú -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">
+            REBAJAS
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Mujeres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Hombres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Niños
+          </a>
+        </li>
+        {{#if admin}}
+          <!-- Si el usuario es admin, deshabilitar el botón del carrito -->
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">
+              <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+            </a>
+          </li>
+        {{else}}
+          <!-- Si no es admin, mostrar normalmente el botón del carrito -->
+          <li class="nav-item">
+            <a class="nav-link" href="/api/carts/{{cartId}}">
+              <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+            </a>
+          </li>
+        {{/if}}
+
+        {{#if token}}
+          <!-- Usuario logueado -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Opciones
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/chat?cartId={{cartId}}">
+                  Chat
+                </a></li>
+              <li><a
+                  class="dropdown-item"
+                  href="/realtimeproducts?cartId={{cartId}}"
+                >
+                  Productos en Tiempo Real
+                </a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a
+                  class="dropdown-item"
+                  href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}"
+                >
+                  Subir Documentos
+                </a></li>
+              <li><a
+                  class="dropdown-item"
+                  href="/auth/users/premium/{{uid}}?cartId={{cartId}}"
+                >
+                  Cambiar a Premium
+                </a></li>
+            </ul>
+          </li>
+        {{else}}
+          {{#if admin}}
+            <!-- Usuario administrador logueado -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Opciones
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/realtimeproducts">
+                    Productos en Tiempo Real
+                  </a></li>
+                <li><a class="dropdown-item" href="/auth/admin">
+                    Administrador Usuarios
+                  </a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="/auth">
+                    Usuarios inactivos
+                  </a></li>
+              </ul>
+            </li>
+          {{/if}}
+        {{/if}}
+      </ul>
+
+      <!-- Sección derecha (Usuario logueado o no logueado) -->
+      <div class="navbar-nav ms-auto">
+        {{#if token}}
+          <!-- Usuario logueado -->
+          <div class="d-flex align-items-center ms-auto">
+            <p class="roleUser nav-item mb-0">
+              <i class="fa-solid fa-user"></i>
+              {{role}}
+            </p>
+            <p class="login nav-item mb-0 ms-2">
+              {{first_name}}
+            </p>
+            <form action="/auth/logout" method="GET" class="nav-item">
+              <button class="btn btn-success" type="submit">
+                <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+              </button>
+            </form>
+          </div>
+        {{else}}
+          {{#if admin}}
+            <!-- Usuario administrador logueado -->
+            <div class="d-flex align-items-center ms-auto">
+              <p class="roleUser nav-item">
+                <i class="fa-solid fa-user"></i>
+                {{admin}}
+              </p>
+              <form action="/auth/logout" method="GET" class="nav-item">
+                <button class="btn btn-success" type="submit">
+                  <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+                </button>
+              </form>
+            </div>
+          {{else}}
+            <!-- Usuario no logueado -->
+            <form action="/auth/login" method="GET" class="navbar-nav">
+              <button class="btn btn-success" type="submit">
+                <i class="fa-solid fa-user"></i>
+              </button>
+            </form>
+            {{#if showLoginMessage}}
+              <p class="login-message nav-item">
+                Debe iniciar sesión para acceder al carrito
+              </p>
+            {{/if}}
+          {{/if}}
+        {{/if}}
       </div>
-      <form action="/auth/logout" method="GET">
-        <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-      </form>
-      {{else}}
-        <form action="/auth/login" method="GET">
-          <button class="btn btn-success" type="submit"><i class="fa-solid fa-user"></i></button>
-        </form>
-      {{/if}}
-    {{/if}}
-    <div>
-      <button class="btn btn-outline-danger cart" type="submit"><i class="fa-solid fa-cart-shopping"></i></button> 
     </div>
   </div>
 </nav>
