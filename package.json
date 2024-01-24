@@ -7,7 +7,8 @@
   "scripts": {
     "test": "mocha test/Cart.test.js test/Products.test.js test/Users.test.js",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon -e js,json,handlebars -w src src/app.js"
+
   },
   "keywords": [],
   "author": "",
@@ -48,5 +49,8 @@
     "handlebars": "^4.5.0",
     "mocha": "^10.2.0",
     "supertest": "^6.3.3"
+  },
+  "nodemonConfig": {
+    "ext": "js,json,handlebars"
   }
 }

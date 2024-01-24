@@ -44,15 +44,15 @@ noteform.addEventListener("submit", async (e) => {
     description: description.value,
   };
 
-     url = urlElement.textContent.trim();
+  url = urlElement.textContent.trim();
 
   try {
     const response = await postData(url, data);
-    console.log(response)
+    console.log(response);
     if (response) {
-      alert("producto agregado")
+      alert("producto agregado");
     } else {
-      alert("no puedes agregar productos")
+      alert("no puedes agregar productos");
     }
   } catch (error) {
     console.log(error);
@@ -68,10 +68,21 @@ socket.on("producto", async (data) => {
 const attachRow = async (data) => {
   const fila = document.createElement("tr");
   fila.id = data._id;
-  fila.innerHTML = `<td>${data._id}</td><td>${data.title}</td> <td>${data.description}</td>
-      <td>${data.price}</td><td>${data.thumbnail}</td><td>${data.code}</td><td>${data.stock}</td><td>${data.category}</td><button onclick="deleteProduct('${data._id}')" class="btn btn-danger">X</button>`;
+  fila.innerHTML = `
+    <td>${data._id}</td>
+    <td>${data.title}</td>
+    <td>${data.description}</td>
+    <td>${data.price}</td>
+    <td>${data.thumbnail}</td>
+    <td>${data.code}</td>
+    <td>${data.stock}</td>
+    <td>${data.category}</td>
+    <td>
+      <button onclick="deleteProduct('${data._id}')" class="btn btn-danger">X</button>
+    </td>
+  `;
 
-  table.appendChild(fila);
+  table.querySelector("tbody").appendChild(fila);
 };
 
 socket.on("productos", async (data) => {

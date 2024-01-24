@@ -1,133 +1,340 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<nav class="navbar navbar-dark bg-body-tertiary bg-dark">
+<!-- NavBar -->
+<h2 class="title-top">
+  AHORA 3 Cuotas sin Interés en compras superiores a $39.999 con VISA,
+  MASTERCARD, AMEX Y CABAL
+</h2>
+
+<!-- NavBar 2-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand mx-auto" href="/api/products?cartId={{cartId}}"><i class="fa-solid fa-store"></i> TIENDA DE ROPA</a>
-    {{#if token}}
-      <!-- Usuario logueado -->
-      <div>
-        <p class="roleUser card-text"><i class="fa-solid fa-user"></i> {{ role }}</p>
-      </div>
-      <p class="login card-text">Bienvenido {{ first_name }}</p>
-      <form action="/auth/logout" method="GET">
-        <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-      </form>
-      <a class="btn btn-outline-danger cart" href="/api/carts/{{ cartId }}"><i class="fa-solid fa-cart-shopping fa-bounce"></i></a>
-      <!-- Nuevas rutas como enlaces en una lista desplegable -->
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Más opciones
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/chat?cartId={{cartId}}">Chat</a>
-          <a class="dropdown-item" href="/realtimeproducts?cartId={{cartId}}">Productos en Tiempo Real</a>
-          <a class="dropdown-item" href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}">Subir Documentos</a>
-          <a class="dropdown-item" href="/auth/users/premium/{{uid}}?cartId={{cartId}}">Cambiar a Premium</a>
-        </div>
-      </div>
-    {{else}}
-      {{#if admin}}
+    <a class="navbar-brand" href="/api/products?cartId={{cartId}}">
+      <i class="fa-solid fa-store"></i>
+      TIENDA DE ROPA
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenido del menú -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">
+            REBAJAS
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Mujeres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Hombres
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Niños
+          </a>
+        </li>
+        {{#if admin}}
+        <!-- Si el usuario es admin, deshabilitar el botón del carrito -->
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">
+            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+          </a>
+        </li>
+        {{else}}
+        <!-- Si no es admin, mostrar normalmente el botón del carrito -->
+        <li class="nav-item">
+          <a class="nav-link" href="/api/carts/{{cartId}}">
+            <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+          </a>
+        </li>
+        {{/if}}
+
+        {{#if token}}
+        <!-- Usuario logueado -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/chat?cartId={{cartId}}">
+                Chat
+              </a></li>
+            <li><a class="dropdown-item" href="/realtimeproducts?cartId={{cartId}}">
+                Productos en Tiempo Real
+              </a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="/auth/users/{{uid}}/documents/upload?cartId={{cartId}}">
+                Subir Documentos
+              </a></li>
+            <li><a class="dropdown-item" href="/auth/users/premium/{{uid}}?cartId={{cartId}}">
+                Cambiar a Premium
+              </a></li>
+          </ul>
+        </li>
+        {{else}}
+        {{#if admin}}
         <!-- Usuario administrador logueado -->
-        <div>
-          <p class="login card-text"><i class="fa-solid fa-user"></i> {{ admin }}</p>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/realtimeproducts">
+                Productos en Tiempo Real
+              </a></li>
+            <li><a class="dropdown-item" href="/auth/admin">
+                Administrador Usuarios
+              </a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="/auth">
+                Usuarios inactivos
+              </a></li>
+          </ul>
+        </li>
+        {{/if}}
+        {{/if}}
+      </ul>
+      
+      <!-- Sección derecha (Usuario logueado o no logueado) -->
+      <div class="navbar-nav ms-auto">
+        {{#if token}}
+        <!-- Usuario logueado -->
+        <div class="d-flex align-items-center ms-auto">
+          <p class="roleUser nav-item mb-0">
+            <i class="fa-solid fa-user"></i>
+            {{role}}
+          </p>
+          <p class="login nav-item mb-0 ms-2">
+            {{first_name}}
+          </p>
+          <form action="/auth/logout" method="GET" class="nav-item">
+            <button class="btn btn-success" type="submit">
+              <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+            </button>
+          </form>
         </div>
-        <form action="/auth/logout" method="GET">
-          <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-        </form>
-        <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Más opciones
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/realtimeproducts">Productos en Tiempo Real</a>
-          <a class="dropdown-item" href="/auth/admin">Administrador Usuarios</a>
-           <a class="dropdown-item" href="/auth">Usuarios inactivos</a>
+        {{else}}
+        {{#if admin}}
+        <!-- Usuario administrador logueado -->
+        <div class="d-flex align-items-center ms-auto">
+          <p class="roleUser nav-item">
+            <i class="fa-solid fa-user"></i>
+            {{admin}}
+          </p>
+          <form action="/auth/logout" method="GET" class="nav-item">
+            <button class="btn btn-success" type="submit">
+              <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i>
+            </button>
+          </form>
         </div>
-      </div>
-      {{else}}
+        {{else}}
         <!-- Usuario no logueado -->
-        <form action="/auth/login" method="GET">
-          <button class="btn btn-success" type="submit"><i class="fa-solid fa-user"></i></button>
+        <form action="/auth/login" method="GET" class="navbar-nav">
+          <button class="btn btn-success" type="submit">
+            <i class="fa-solid fa-user"></i>
+          </button>
         </form>
         {{#if showLoginMessage}}
-          <p class="login-message">Debe iniciar sesión para acceder al carrito</p>
+        <p class="login-message nav-item">
+          Debe iniciar sesión para acceder al carrito
+        </p>
         {{/if}}
-      {{/if}}
-    {{/if}}
+        {{/if}}
+        {{/if}}
+      </div>
+    </div>
   </div>
 </nav>
 
-<div>
-  <h2 class="title bg-secondary">Productos</h2>
+<!-- Imagen top -->
+<div class="container-fluid">
+  <img class="img-nav"
+    src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+  <div class="overlay">
+    <p class="overlay_off">
+      REBAJAS HASTA 40% OFF
+    </p>
+    <p>
+      EN ARTICULOS SELECCIONADOS HASTA EL 31/03 APROVECHA CON ENVIO GRATIS SIN
+      INTERES
+    </p>
+    <p>
+      Aplican términos y condiciones*
+    </p>
+  </div>
 </div>
+
+<!--Beneficios -->
+<div>
+  <h2 class="title-top text-center">
+    APROVECHA NUESTROS BENEFICIOS:
+  </h2>
+</div>
+
+<div class="container-fluid">
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="card-group">
+      <div class="card card1">
+        <img src="/img/delivery.png" class="card-img-top card-img-top1 img-fluid" alt="delivery" style="width: 100%; height: auto;">
+        <div class="card-body">
+          <h5 class="card-title">
+            Envio Gratis
+          </h5>
+          <p class="card-text">
+            Desde $50000
+          </p>
+        </div>
+      </div>
+      <div class="card card1">
+        <img src="/img/tienda.png" class="card-img-top card-img-top1 img-fluid" alt="tienda" style="width: 100%; height: auto;">
+        <div class="card-body">
+          <h5 class="card-title">
+            Retiro en Sucursales Andreani
+          </h5>
+          <p class="card-text">
+            En todo el Pais
+          </p>
+        </div>
+      </div>
+      <div class="card card1">
+        <img src="/img/devolucion.png" class="card-img-top card-img-top1 img-fluid" alt="devolución" style="width: 100%; height: auto;">
+        <div class="card-body">
+          <h5 class="card-title">
+            Devolucion Gratis
+          </h5>
+          <p class="card-text">
+            Hasta 30 Diás
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Descuentos -->
+<div class="container-fluid">
+  <div class="card-group">
+    <div class="card card-border border-0 m-0">
+      <img
+        src="https://img.freepik.com/foto-gratis/hombre-joven-camisa-elegir-ropa-centro-comercial-o-tienda-ropa_23-2148175648.jpg?w=740&t=st=1705459019~exp=1705459619~hmac=b15043f94b535219aeb8537efc932057139925f65926c7bf52e5b17ae0625906"
+        class="card-img w-100" alt="..." />
+      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        <h5 class="custom-display-2">
+          HASTA 20%
+        </h5>
+      </div>
+    </div>
+
+    <div class="card card-border border-0 m-0">
+      <img
+        src="https://img.freepik.com/foto-gratis/mujer-mirando-blusa_23-2147688758.jpg?w=740&t=st=1705459191~exp=1705459791~hmac=1ec938ad92d9fef3c381d26ed517ded13e6910f45772169a849694e231595106"
+        class="card-img w-100" alt="..." />
+      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        <h5 class="custom-display-2">
+          HASTA 30%
+        </h5>
+      </div>
+    </div>
+
+    <div class="card card-border border-0 m-0 text-bg-dark">
+      <img
+        src="https://img.freepik.com/foto-gratis/mejores-amigos-juntos-pasan-tiempo-dos-hermosas-chicas-hacen-compras-tienda-ropa-vestian-misma-ropa_146671-15090.jpg?w=740&t=st=1705459150~exp=1705459750~hmac=14452a44d35ca569f745271361d5bc826340b07367d3912bd601f67418ae97ad"
+        class="card-img w-100" alt="..." />
+      <div class="card-img-overlay d-flex align-items-center justify-content-center">
+        <h5 class="custom-display-2">
+          HASTA 40%
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- productos -->
 <div class="form">
   <!-- Formulario para ordenar productos -->
   <form id="order-form" class="order" action="/api/products" method="GET">
-    <button class="btn btn-secondary" type="submit" name="sort" value="asc">Ordenar Ascendente</button>
-    <button class="btn btn-secondary" type="submit" name="sort" value="desc">Ordenar Descendente</button>
+    <button class="btn btn-secondary" type="submit" name="sort" value="asc">
+      Ordenar Ascendente
+    </button>
+    <button class="btn btn-secondary" type="submit" name="sort" value="desc">
+      Ordenar Descendente
+    </button>
     {{#if cartId}}
-      <input type="hidden" name="cartId" value="{{cartId}}">
+    <input type="hidden" name="cartId" value="{{cartId}}" />
     {{/if}}
   </form>
 
   <!-- Formulario para buscar productos por categoría -->
   <form id="search-form" class="search" action="/api/products" method="GET">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Buscar por categoría" name="query">
+      <input type="text" class="form-control" placeholder="Buscar por categoría" name="query" />
       <div class="input-group-append">
-        <button class="btn btn-primary" type="submit">Buscar</button>
+        <button class="btn btn-primary" type="submit">
+          Buscar
+        </button>
       </div>
     </div>
     {{#if cartId}}
-      <input type="hidden" name="cartId" value="{{cartId}}">
+    <input type="hidden" name="cartId" value="{{cartId}}" />
     {{/if}}
   </form>
 </div>
 
-
-<div class="block" data-cart-id="{{cartId}}">
+<!-- Card de Productos -->
+<div class="container-fluid block" style="margin-bottom: 30px" data-cart-id="{{cartId}}">
   {{#if response.payload}}
-    {{#each response.payload}}
-      <div class="card" style="width: 300px;">
-        <img src="{{this.thumbnail}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{this.title}}</h5>
-          <p>Categoría: {{this.category}}</p>
-          <a class="btn btn-primary" href="/api/products/{{this._id}}">Ver detalles</a>
-          <form id="add-to-cart-form-{{this._id}}">
-            <input type="hidden" name="productId" value="{{this._id}}">
-           <button type="button" class="btn btn-danger add-to-cart-button" data-product-id="{{this._id}}">Agregar al carrito</button>
-
-          </form>
-          <div class="card-footer">
-            <small class="text-body-secondary">Precio: ${{this.price}}</small>
-          </div>
-        </div>
-      </div>
-    {{/each}}
+  {{#each response.payload}}
+  <div class="card mb-4 m-0 product-card">
+    <a href="/api/products/{{this._id}}" class="card-link">
+      <img src="{{this.thumbnail}}" class="card-img-top" alt="..." />
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{this.title}}</h5>
+      <p>Categoría: {{this.category}}</p>
+      <small class="text-body-secondary">Precio: ${{this.price}}</small>
+      <form id="add-to-cart-form-{{this._id}}">
+        <input type="hidden" name="productId" value="{{this._id}}" />
+        <button type="button" class="btn btn-danger add-to-cart-button" data-product-id="{{this._id}}">
+          AÑADIR AL CARRITO
+        </button>
+      </form>
+    </div>
   </div>
-
+  {{/each}}
   <ul class="pagination">
     {{#if response.hasPrevPage}}
-      <li class="page-item">
-        <a class="page-link" href="{{response.prevLink}}&cartId={{cartId}}">Anterior</a>
-      </li>
+    <li class="page-item">
+      <a class="page-link" href="{{response.prevLink}}&cartId={{cartId}}">
+        Anterior
+      </a>
+    </li>
     {{/if}}
     {{#if response.hasNextPage}}
-      <li class="page-item">
-        <a class="page-link" href="{{response.nextLink}}&cartId={{cartId}}">Siguiente</a>
-      </li>
+    <li class="page-item">
+      <a class="page-link" href="{{response.nextLink}}&cartId={{cartId}}">
+        Siguiente
+      </a>
+    </li>
     {{/if}}
   </ul>
-{{else}}
+  {{else}}
   <p class="notProduct">No se encontraron productos.</p>
-{{/if}}
-
+  {{/if}}
+</div>
 
 <script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/style.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/product.js"></script>
 
- 
+<script src="/product.js"></script>

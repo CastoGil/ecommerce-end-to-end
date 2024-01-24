@@ -1,62 +1,127 @@
-<nav class="navbar navbar-dark bg-body-tertiary bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-auto"><i class="fa-solid fa-store"></i> TIENDA DE ROPA </a>
-    {{#if token}}
-    <div>
-      <p class="roleUser card-text"><i class="fa-solid fa-user"></i> {{ role }} </p>
-    </div>
-    <p class="login card-text">Bienvenido {{ first_name }}</p>
-    <form action="/auth/logout" method="GET">
-      <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-    </form>
-    {{else}}
-      {{#if admin}}
-      <div>
-        <p class="login card-text"><i class="fa-solid fa-user"></i> {{ admin }} </p>
+<h2 class="title-top">AHORA 3 Cuotas sin Interés en compras superiores a $39.999
+  con VISA, MASTERCARD, AMEX Y CABAL</h2>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid mx-3">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-store"></i>
+      TIENDA DE ROPA
+    </a>
+    <!-- Botón de colapso para pantallas pequeñas -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarNavAltMarkup"
+    >
+      <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" href="#">REBAJAS</a>
+        <a class="nav-link" href="#">Mujeres</a>
+        <a class="nav-link" href="#">Hombres</a>
+        <a class="nav-link" href="#">Niños</a>
+        <a
+          class="nav-link disabled"
+          aria-disabled="true"
+          href="/api/carts/{{cartId}}"
+        >
+          <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+        </a>
       </div>
-      <form action="/auth/logout" method="GET">
-        <button class="btn btn-success" type="submit"> Sign Out <i class="fa-solid fa-right-from-bracket fa-beat-fade"></i></button>
-      </form>
-      {{else}}
-        <form action="/auth/login" method="GET">
-          <button class="btn btn-success" type="submit"><i class="fa-solid fa-user"></i></button>
-        </form>
-      {{/if}}
-    {{/if}}
-    <div>
-      <button class="btn btn-outline-danger cart" type="submit"><i class="fa-solid fa-cart-shopping"></i></button> 
     </div>
   </div>
 </nav>
- <div class="container">
-  <h2 class="title bg-secondary">Register</h2>
-  {{#if error}}
-  <div class="alert alert-danger">{{error}}</div>
-  {{/if}}
-  <form method="POST" class="login" action="/auth/register">
-    <div class="form-group">
-      <label for="first_name">Name:</label>
-      <input type="text" id="first_name" name="first_name" class="form-control" required>
-    </div>
-    <div class="form-group">
-      <label for="last_name">Last Name:</label>
-      <input type="text" id="last_name" name="last_name" class="form-control" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" class="form-control" required>
-    </div>
-    <div class="form-group">
-      <label for="age">Age:</label>
-  <input type="text" id="age" name="age" class="form-control" pattern="[0-9]+" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-success">Register</button>
-  </form>
-  <p class="login">Already have an account? <a href="/auth/login">Login</a></p>
+
+<div>
+  <h2 class="title-login">PANEL DE CUENTA</h2>
 </div>
-<script src="https://kit.fontawesome.com/48d346ada8.js" crossorigin="anonymous"></script>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+      {{/if}}
+      <form method="POST" class="login" action="/auth/register">
+        <div class="form-group">
+          <p> <strong>REGISTRO:</strong></p>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            class="form-control"
+            placeholder="NOMBRE *"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            class="form-control"
+            placeholder="SEGUNDO NOMBRE *"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="EMAIL *"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            id="age"
+            name="age"
+            class="form-control"
+            pattern="[0-9]+"
+            placeholder="EDAD *"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="CONTRASEÑA *"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms" class="terms">Al crear una cuenta, aceptas que has
+            leido, entendido, y aceptado los Términos y condiciones y da su
+            consentimiento para cada tipo de transacción que requiera su
+            consentimiento expreso para el procesamiento de sus datos personales
+            bajo la Politica de Privacidad.</label>
+        </div>
+        <div class="sesion text-center register">
+          <button type="submit" class="btn ligth">CREAR UNA CUENTA</button>
+          <p class="login-msg">¿Ya tienes cuenta?
+            <a href="/auth/login">Ingresar</a></p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<script
+  src="https://kit.fontawesome.com/48d346ada8.js"
+  crossorigin="anonymous"
+></script>
 <link rel="stylesheet" href="/style.css" />

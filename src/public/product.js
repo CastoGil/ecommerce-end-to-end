@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
           alert('Tienes que iniciar sesión para agregar productos al carrito');
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     });
   });

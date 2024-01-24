@@ -10,6 +10,7 @@ describe("Auth Router - Register", () => {
   it("should register a new user", async function () {
     this.timeout(10000);
 
+  
     const userData = {
       first_name: faker.name.firstName(),
       last_name: faker.name.lastName(),
