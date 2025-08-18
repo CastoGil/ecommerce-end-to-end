@@ -1,74 +1,74 @@
-# E-commerce Web App
+# Ecommerce.end
 
-## Descripción
-Este es un proyecto de una aplicación web de e-commerce, donde los usuarios pueden ver productos, agregarlos al carrito de compras y realizar compras. También incluye funcionalidades de autenticación, administración de usuarios y administración de productos.
+Plataforma e-commerce completa con carrito, pasarela de pagos, autenticación y tests.
 
-## Instalación
-1. Clona este repositorio: `git clone <URL_del_repositorio>`
-2. Instala las dependencias: `npm install`
+## 🚀 Características
+- Catálogo de productos con CRUD completo.
+- Carrito de compras con persistencia en MongoDB.
+- Procesamiento de pagos usando Stripe Checkout y webhooks.
+- Autenticación y autorización con Passport (GitHub OAuth) y JWT (cookies).
+- Roles: admin / user / premium con vistas y permisos diferenciados.
+- Subida de documentos con Multer (perfil, identificación, comprobante domicilio, etc.).
+- Enío de emails transaccionales (recupero de contraseña).
+- Endpoints documentados con Swagger.
+- Tests de API (Mocha, Chai, Supertest).
 
-## Configuración
-1. Crea un archivo `.env` en la raíz del proyecto y configura las siguientes variables de entorno:
-
-- MONGO_URI: Es la URL de conexión a la base de datos MongoDB.
-- CLIENT_ID: Es el ID del cliente de la aplicación utilizado para autenticar un servicio de terceros, en este caso, GitHub.
-- CLIENT_SECRET: Es el secreto del cliente de la aplicación utilizado para autenticar GitHub.
-- CALLBACK_URL: Es la URL a la que se redireccionará después de que el usuario haya iniciado sesión en GitHub y dado su consentimiento.
-- JWT_SECRET: Es la clave secreta utilizada para firmar y verificar los tokens de JSON Web (JWT) generados por la aplicación.
-- PORT: Es el número de puerto en el que se ejecutará la aplicación, en este caso, 8080.
-- NODE_ENV: Es una variable de entorno que indica el entorno de ejecución de la aplicación, en este caso, "production".
-- COOKIE_SECRET: Es la clave secreta utilizada para firmar las cookies enviadas al navegador del usuario.
-- STRIPE_SECRET: Es el secreto utilizado para autenticarse con el servicio de pagos Stripe.
-- ADMIN_EMAIL: Es el correo electrónico del administrador de la aplicación.
-- ADMIN_PASSWORD: Es la contraseña del administrador de la aplicación.
-- SUCCESS_URL: Es la URL a la que se redireccionará después de un pago exitoso.
-- CANCEL_URL: Es la URL a la que se redireccionará después de un pago cancelado.
-- USER_EMAIL: Es el correo electrónico de un usuario registrado en la aplicación, utilizado para enviar correos electrónicos a los usuarios.
-- USER_PASS: Es la contraseña del usuario registrado en la aplicación, utilizada para enviar correos electrónicos a los usuarios.
-- URL_PRODUCTS: Es la URL de una ruta o servicio que proporciona información sobre los productos disponibles en la aplicación.
-
-## Uso
-1. Ejecuta el servidor: `npm start` o `npm run dev` (nodemon).
-2. Abre tu navegador y visita `http://localhost:8080/api/products`
-
-## Algunas Funcionalidades
-- Registro e inicio de sesión de usuarios.
-- Ver listado de productos y detalles de cada producto.
-- Agregar productos al carrito de compras.
-- Realizar compras con una cuenta premium.
-- Restablecimiento de contraseña por correo electrónico.
-- Administración de usuarios (solo para usuarios con rol de administrador).
-- Administración de productos (solo para usuarios con rol de administrador).
-- Pasarela de Pago con Stripe.
-- Envío de Correos electrónicos con Nodemailer.
-- Entre otras funcionalidades...
-
-## Algunas Tecnologías utilizadas
-- Node.js
-- Express.js
-- Passport.js (para autenticación)
-- MongoDB (como base de datos)
-- Bootstrap (para el diseño)
-- Handlebars
-- Swagger
+## 💍 Tecnologías
+- Node.js y Express
+- MongoDB + Mongoose
+- Handlebars para vistas
+- Passport.js, JWT y cookies
+- Stripe
 - Multer
-- Mocha
-- Chai
-- Supertest
-- Winston
-- Entre otras tecnologías...
+- Swagger
+- Mocha, Chai, Supertest
+- Nodemailer
 
-## Estructura del Proyecto
-- El proyecto está organizado en varias carpetas: `controllers`, `middlewares`, `routes`, `views`, `utils`, `services`, etc.
+## 🔧 Instalación
 
-## Contribución
-- Si deseas contribuir al proyecto, sigue estos pasos:
-  1. Haz un fork del repositorio.
-  2. Crea una rama para tu contribución: `git checkout -b mi-contribucion`
-  3. Realiza tus cambios y haz commit: `git commit -m "Mi contribución"`
-  4. Haz push a tu repositorio: `git push origin mi-contribucion`
-  5. Crea un pull request para que revisemos tus cambios.
+    git clone https://github.com/CastoGil/Ecommerce.end.git
+    cd Ecommerce.end
+    npm ci
+    cp .env.example .env        # copia el archivo de ejemplo y completa las variables
+    npm run dev                 # inicia el servidor con nodemon
 
-## Autor
-- Casto Gil
+### Variables de entorno (.env)
 
+    PORT=3000
+    MONGO_URI=mongodb+srv://usuario:clave@cluster.mongodb.net/ecommerce?retryWrites=true&w=majority
+    JWT_SECRET=tu_jwt_secreto
+    STRIPE_SECRET=tu_clave_secreta_de_stripe
+    GITHUB_CLIENT_ID=tu_id_de_cliente_github
+    GITHUB_CLIENT_SECRET=tu_cliente_secret_github
+    GITHUB_CALLBACK_URL=http://localhost:3000/api/sessions/githubcallback
+    ADMIN_EMAIL=admin@tudominio.com
+    ADMIN_PASSWORD=contraseña_admin
+
+
+## 🥫 Scripts
+
+- `npm run dev`: inicia con nodemon para desarrollo.
+- `npm start`: ejecuta en modo producción.
+- `npm test`: corre tests unitarios y de endpoints.
+
+## 🌐 Uso
+
+- Visita http://localhost:3000 para cargar el catálogo.
+- Crea un usuario o inicia sesión con GitHub.
+- Agrega productos al carrito y finaliza la compra.
+- Accede al panel de administrador para gestionar productos y usuarios.
+
+## 📦 API
+
+La API REST está documentada con Swagger disponible en http://localhost:3000/api/docs. Incluye operaciones sobre usuarios, productos, carritos y sesiones.
+
+## ✅ Próximos pasos
+- Dockerización y despliegue a escala.
+- Pruebas de integración end‑to‑end.
+- Mejora de la cobertura de tests.
+
+## 🤝 Contribuciones
+¡Las contribuciones son bienvenidas! Crea un fork, realiza tu branch, implementa los cambios y abre un Pull Request.
+
+## 📝 Licencia
+Este proyecto está bajo la licencia MIT.
