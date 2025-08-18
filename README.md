@@ -1,4 +1,4 @@
-# Ecommerce.end
+# Ecommerce
 
 Plataforma e-commerce completa con carrito, pasarela de pagos, autenticación y tests.
 
