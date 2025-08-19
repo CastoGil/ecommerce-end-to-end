@@ -23,6 +23,7 @@ Plataforma e-commerce completa con carrito, pasarela de pagos, autenticación y 
 - Swagger
 - Mocha, Chai, Supertest
 - Nodemailer
+- 
 
 ## 🔧 Instalación
 
@@ -72,3 +73,13 @@ La API REST está documentada con Swagger disponible en http://localhost:3000/ap
 
 ## 📝 Licencia
 Este proyecto está bajo la licencia MIT.
+
+
+## 🏗️ Arquitectura del proyecto
+- `src/models/`: modelos de Mongoose para `User`, `Product`, `Cart`, `Ticket`, etc.
+- `src/routes/`: definiciones de rutas REST (usuarios, productos, carritos, sesiones).
+- `src/controllers/`: lógica de cada ruta (crear producto, añadir al carrito, procesar pago, etc.).
+- `src/services/`: funciones reutilizables para acceso a base de datos y lógica de negocio.
+- `src/config/`: configuración de la app (conexión a MongoDB, inicialización de Passport, parámetros).
+- `src/utils/`: helpers (JWT, manejo de errores, envío de emails).
+- `src/middlewares/`: middlewares de autenticación y autorización, manejo de errores, validación de roles.
